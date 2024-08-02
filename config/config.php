@@ -1,36 +1,24 @@
-<?php 
-      
-    // if(!isset($_SERVER['HTTP_REFERER'])){
-    //     // redirect them to your desired location
-    //     header('location: http://localhost/freshcery/index.php');
-    //     exit;
-    // }
+<?php
 
-      
     try {
-        
         //host
-        if (!defined('HOST')) define("HOST", "localhost");
+        define("HOST", "localhost");
 
         //dbname
-        if (!defined('DBNAME')) define("DBNAME", "coffee_blend");
+        define("DBNAME", "coffee-blend");
 
         //user
-        if (!defined('USER')) define("USER", "root");
+        define("USER", "root");
 
         //pass
-        if (!defined('PASS')) define("PASS", "");
+        define("PASS", "");
 
 
-        $conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";", USER, PASS);
+        $conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME."", USER, PASS);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // if($conn == true) {
-        //     echo "connected successfully";
-        // } else {
-        //     echo "error";
-        // }
+    } catch(PDOException $Exception ) { 
 
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+        echo $Exception->getMessage();
     }
+   
