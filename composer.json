@@ -1,0 +1,15 @@
+{
+    "name": "michael/coffee-shop-management",
+    "autoload": {
+        "psr-4": {
+            "Michael\\CoffeeShopManagement\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "haile12michael12",
+            "email": "michaelhaile12@yahoo.com"
+        }
+    ],
+    "require": {}
+}
