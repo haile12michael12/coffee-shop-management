@@ -1,5 +1,5 @@
-<?php require "../includes/header.php"; ?>
-<?php require "../config/config.php"; ?>
+<?php require_once '../views/layouts/header.php'; ?>
+
 <?php 
 
   if(isset($_SESSION['username'])) {
@@ -30,7 +30,6 @@
 
     }
   }
-
 
 ?>
 
@@ -94,4 +93,4 @@
       </div>
     </section> <!-- .section -->
 
-<?php require "../includes/footer.php"; ?>
+    <?php require_once '../views/layouts/footer.php'; ?>

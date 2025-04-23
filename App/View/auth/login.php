@@ -1,5 +1,4 @@
-<?php require '../includes/header.php'; ?>
-
+<?php require_once '../views/layouts/header.php'; ?>
 <div class="login-container">
     <h1>Login</h1>
     <?php if (isset($error)): ?>
@@ -17,5 +16,4 @@
         <button type="submit" name="submit">Login</button>
     </form>
 </div>
-
-<?php require '../includes/footer.php'; ?>
+<?php require_once '../views/layouts/footer.php'; ?>

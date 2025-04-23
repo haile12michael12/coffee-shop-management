@@ -1,39 +1,34 @@
 <?php
-class BookingController extends Controller
-{
-    public function create()
-    {
-        $this->view('bookings/create');
+class Booking {
+    private $conn;
+
+    public function __construct($conn) {
+        $this->conn = $conn;
     }
 
-    public function store()
-    {
-        $booking = (new Booking())->create($_POST);
-        redirect('/bookings');
-    }
-
-    public function edit($id)
-    {
-        $booking = Booking::find($id);
-        $this->view('bookings/edit', compact('booking'));
-    }
-
-    public function update($id)
-    {
-        $booking = (new Booking())->update($id, $_POST);
-        redirect('/bookings');
-    }
-
-    public function destroy($id)
-    {
-        (new Booking())->delete($id);
-        redirect('/bookings');
-    }
-
-    public function index()
-    {
-        $userId = Auth::user()->id;
-        $bookings = (new Booking())->getAllByUserId($userId);
-        $this->view('bookings/index', compact('bookings'));
+    public function create($data) {
+        try {
+            $stmt = $this->conn->prepare("
+                INSERT INTO bookings 
+                (first_name, last_name, date, time, phone, message, user_id)
+                VALUES 
+                (:first_name, :last_name, :date, :time, :phone, :message, :user_id)
+            ");
+            
+            return $stmt->execute([
+                ':first_name' => $data['first_name'],
+                ':last_name' => $data['last_name'],
+                ':date' => $data['date'],
+                ':time' => $data['time'],
+                ':phone' => $data['phone'],
+                ':message' => $data['message'],
+                ':user_id' => $data['user_id']
+            ]);
+            
+        } catch(PDOException $e) {
+            error_log($e->getMessage());
+            return false;
+        }
     }
 }
+?>
