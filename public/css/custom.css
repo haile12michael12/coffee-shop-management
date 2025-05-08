@@ -1,0 +1,281 @@
+/* Custom styles for Coffee Shop Management System */
+
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom utility classes */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+/* Custom components */
+.coffee-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.coffee-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom form styles */
+.form-input:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Custom button styles */
+.btn-primary {
+    background-color: #4F46E5;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4338CA;
+}
+
+/* Custom alert styles */
+.alert {
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* Custom table styles */
+.table-custom th {
+    background-color: #F9FAFB;
+}
+
+.table-custom tr:hover {
+    background-color: #F3F4F6;
+}
+
+/* Custom modal styles */
+.modal-custom {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Custom loading spinner */
+.spinner {
+    border: 3px solid #F3F4F6;
+    border-top: 3px solid #4F46E5;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F3F4F6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9CA3AF;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+}
+
+/* Custom focus styles */
+.focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Custom badge styles */
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge-success {
+    background-color: #10B981;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #F59E0B;
+    color: white;
+}
+
+.badge-error {
+    background-color: #EF4444;
+    color: white;
+}
+
+/* Custom tooltip */
+.tooltip {
+    position: relative;
+}
+
+.tooltip:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background-color: #1F2937;
+    color: white;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.tooltip:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Custom card styles */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom image styles */
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform 0.3s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* Custom navigation styles */
+.nav-link {
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4F46E5;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+/* Custom dropdown styles */
+.dropdown-menu {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Custom pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.pagination-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.pagination-item:hover {
+    background-color: #F3F4F6;
+}
+
+.pagination-item.active {
+    background-color: #4F46E5;
+    color: white;
+}
+
+/* Custom form validation styles */
+.form-error {
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.form-success {
+    color: #10B981;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Custom loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Custom toast notification */
+.toast {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* Custom responsive utilities */
+@media (max-width: 640px) {
+    .hide-sm {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hide-md {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hide-lg {
+        display: none;
+    }
+} 

@@ -1,4 +1,4 @@
-<?php require __DIR__.'/../../includes/header.php'; ?>
+<?php require __DIR__.'/../../layouts/header.php'; ?>
 
 <section class="home-slider owl-carousel">
     <div class="slider-item" style="background-image: url(<?php echo APPURL; ?>/images/bg_3.jpg);" data-stellar-background-ratio="0.5">

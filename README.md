@@ -1,61 +1,98 @@
-# Amazing Coffee Shop Management System
-This project is a comprehensive Coffee Shop Management System developed using PHP, MySQL, Bootstrap, PayPal, and PDO. The system features a user-friendly interface for browsing and ordering coffee products, along with a robust admin panel for managing products, orders, and users. It also integrates PayPal for secure online payments. The platform is designed to be responsive, ensuring an optimal experience across various devices.
+# Coffee Shop Management System
+
+A modern PHP-based Coffee Shop Management System built using the MVC (Model-View-Controller) architecture.
 
 ## Features
-## User Side
-Product Listings: Browse and search for coffee products.
-Product Details: View detailed information about each coffee item.
-Shopping Cart: Add coffee items to the cart and manage cart items.
-Checkout Process: Complete purchases through a secure payment gateway.
-User Registration and Login: Create an account, log in, and manage orders.
-PayPal Integration: Secure payment processing for coffee orders.
-## Admin Panel
-Dashboard: Overview of store statistics and recent activities.
-Manage Products: Add, update, and delete coffee product listings.
-Order Management: View and manage customer orders.
-User Management: Add, edit, and remove users.
-Settings: Configure store settings, product options, and payment settings.
-## Technologies Used
-PHP: Server-side scripting language.
-MySQL: Database management system.
-Bootstrap: Front-end framework for responsive design.
-PDO: PHP Data Objects for secure database interaction.
-PayPal: Payment gateway integration for secure transactions.
+
+- Product Management
+  - Add, edit, and delete products
+  - Categorize products
+  - Track inventory
+- Order Management
+  - Create and manage orders
+  - Track order status
+  - Process payments
+- User Management
+  - Multiple user roles (admin, staff, customer)
+  - Secure authentication
+- Modern UI
+  - Responsive design
+  - Bootstrap 5
+  - Font Awesome icons
+
+## Requirements
+
+- PHP 7.4 or higher
+- MySQL 5.7 or higher
+- Apache/Nginx web server
+- Composer (for dependency management)
+
 ## Installation
-1.Clone the repository:
 
-git clone https://github.com/yourusername/coffee-shop-management.git
-2.Navigate to the project directory:
-
+1. Clone the repository:
+```bash
+git clone https://github.com/haile12michael12/coffee-shop-management.git
 cd coffee-shop-management
-3.Create a database and import the provided SQL file:
+```
 
-Create a new database in MySQL.
-Import the database.sql file located in the sql directory.
-4.Update database configuration:
+2. Install dependencies:
+```bash
+composer install
+```
 
-Open config.php and update the database credentials.
-Configure PayPal settings:
+3. Create the database:
+```bash
+mysql -u root -p < database/schema.sql
+```
 
-Open paypal_config.php and update the PayPal API credentials.
-5.Run the application:
+4. Configure the database connection:
+- Copy `config/database.example.php` to `config/database.php`
+- Update the database credentials in `config/database.php`
 
-Start your local server (e.g., using XAMPP or WAMP).
-Access the application in your browser at http://localhost/coffee-shop-management.
+5. Set up the web server:
+- Point your web server's document root to the `public` directory
+- Ensure the `storage` directory is writable by the web server
+
+6. Start the development server:
+```bash
+php -S localhost:8000 -t public
+```
+
+## Directory Structure
+
+```
+coffee-shop-management/
+├── App/
+│   ├── Controllers/
+│   ├── Models/
+│   └── Views/
+├── config/
+├── database/
+├── public/
+├── storage/
+└── vendor/
+```
+
 ## Usage
-## Admin Panel:
 
-Access the admin panel at http://localhost/coffee-shop-management/admin.
-Use the default admin credentials provided in the installation guide to log in.
-User Registration and Coffee Ordering:
+1. Access the application at `http://localhost:8000`
+2. Log in with the default admin credentials:
+   - Username: admin
+   - Password: admin123
+3. Start managing your coffee shop!
 
-Users can register and log in to browse and order coffee products.
-Secure payments can be made through PayPal.
 ## Contributing
-Contributions are welcome! Please fork this repository and submit pull requests for any enhancements or bug fixes.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
 
-## Contact
-For any inquiries or support, please contact
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, email support@coffeeshop.com or create an issue in the repository.

@@ -1,45 +1,35 @@
 <?php
 
-use Illuminate\Support\Facades\Route; 
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\Auth\AuthController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\GoogleController; 
- 
-// Authentication Routes
-Route::prefix('auth')->group(function () {
-    Route::get('/register', function () {
-        return Auth::check() ? redirect()->route('taskManagement.index') : view('auth.register');
-    })->name('register');
+use App\Core\Router;
 
-    Route::post('/register', [AuthController::class, 'register']);
+// Public routes
+Router::get('/', 'HomeController@index');
+Router::get('/menu', 'MenuController@index');
+Router::get('/menu/{id}', 'MenuController@show');
 
-    Route::get('/login', function () {
-        return Auth::check() ? redirect()->route('taskManagement.index') : view('auth.login');
-    })->name('login');
+// Authentication routes
+Router::get('/login', 'AuthController@loginForm');
+Router::post('/login', 'AuthController@login');
+Router::get('/register', 'AuthController@registerForm');
+Router::post('/register', 'AuthController@register');
+Router::get('/logout', 'AuthController@logout');
 
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Customer routes
+Router::get('/orders', 'OrderController@index');
+Router::post('/orders', 'OrderController@store');
+Router::get('/orders/{id}', 'OrderController@show');
 
-    // Google Authentication
-    Route::get('/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
-    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-});
+// Admin routes
+Router::get('/admin', 'AdminController@dashboard');
+Router::get('/admin/menu', 'AdminController@menu');
+Router::post('/admin/menu', 'AdminController@storeMenuItem');
+Router::put('/admin/menu/{id}', 'AdminController@updateMenuItem');
+Router::delete('/admin/menu/{id}', 'AdminController@deleteMenuItem');
 
-// Task Management Routes (Requires Authentication)
-Route::middleware('auth')->prefix('taskManagement')->name('taskManagement.')->group(function () {
-    Route::get('/', [TaskController::class, 'index'])->name('index');
-    Route::post('/DateRange', [TaskController::class, 'DateRange'])->name('DateRange');
+Router::get('/admin/orders', 'AdminController@orders');
+Router::put('/admin/orders/{id}', 'AdminController@updateOrderStatus');
 
-    // Task CRUD Operations
-    Route::get('/task', [TaskController::class, 'create'])->name('create');
-    Route::post('/task', [TaskController::class, 'create']);
-    Route::post('/store', [TaskController::class, 'store'])->name('store');
-    Route::get('/{task}/edit', [TaskController::class, 'edit'])->name('editTask');
-    Route::patch('/{task}', [TaskController::class, 'update'])->name('updateTask');
-    Route::delete('/{task}', [TaskController::class, 'destroy'])->name('destroy');
-});
- 
-Route::fallback(function () {
-    return response()->view('components.errors.404', [], 404);
-});
+Router::get('/admin/users', 'AdminController@users');
+Router::post('/admin/users', 'AdminController@storeUser');
+Router::put('/admin/users/{id}', 'AdminController@updateUser');
+Router::delete('/admin/users/{id}', 'AdminController@deleteUser');
